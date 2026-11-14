@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b1830">
+<title>Media Pembelajaran Interaktif Softball — PJOK Kelas XII</title>
+<style>
+:root{--navy:#0b1830;--navy2:#132746;--green:#20b486;--lime:#c8f36a;--orange:#ffad5c;--paper:#f4f7fb;--ink:#14243a;--muted:#64748b;--white:#fff;--line:#dbe4ef}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--navy);color:var(--ink)}
+button{font:inherit;cursor:pointer}.app{min-height:100vh;display:flex;flex-direction:column;background:radial-gradient(circle at 85% 8%,#24446a 0,transparent 28%),linear-gradient(145deg,#09162b,#122944 60%,#0c1e32)}
+.topbar{height:66px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(16px,4vw,48px);color:white;border-bottom:1px solid #ffffff1c}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.04em}.brand-mark{width:36px;height:36px;border-radius:12px;background:linear-gradient(145deg,var(--lime),var(--green));display:grid;place-items:center;color:#0b1830;font-weight:1000}
+.topmeta{font-size:12px;color:#c5d2e2;letter-spacing:.12em;text-transform:uppercase}
+.stage{width:min(1120px,calc(100% - 32px));margin:24px auto;flex:1;display:flex;align-items:center;justify-content:center}
+.slide{width:100%;min-height:min(650px,calc(100vh - 190px));background:var(--paper);border-radius:24px;box-shadow:0 24px 80px #0005;overflow:hidden;display:grid;grid-template-columns:10px 1fr;animation:enter .38s ease both}
+.accent{background:linear-gradient(var(--green),var(--lime),var(--orange))}
+.content{padding:clamp(24px,5vw,64px);display:flex;flex-direction:column;position:relative}
+.kicker{color:#138563;font-size:12px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;margin-bottom:18px}
+h1{font-size:clamp(34px,6vw,66px);line-height:1.04;letter-spacing:-.045em;color:var(--navy);margin:0 0 20px;max-width:900px}
+h2{font-size:clamp(26px,4vw,42px);line-height:1.1;color:var(--navy);letter-spacing:-.03em;margin:0 0 22px}
+.lead{font-size:clamp(17px,2vw,22px);line-height:1.55;color:#42536a;max-width:850px}
+.items{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:14px;margin-top:24px}
+.item{background:white;border:1px solid var(--line);border-radius:16px;padding:18px 20px;box-shadow:0 5px 18px #18334d0a}
+.item strong{display:block;color:#0e7658;margin-bottom:7px;font-size:13px;letter-spacing:.06em}
+.item p{margin:0;color:#42536a;line-height:1.5;font-size:15px;overflow-wrap:anywhere}
+.bullet{padding:0;margin:16px 0 0;list-style:none;display:grid;gap:12px;max-width:900px}
+.bullet li{position:relative;padding:14px 18px 14px 46px;border-radius:14px;background:#fff;border:1px solid var(--line);line-height:1.45}
+.bullet li:before{content:"✓";position:absolute;left:16px;top:13px;color:#0e9b70;font-weight:900}
+.hero-art{margin-top:auto;padding-top:32px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;color:#60738b;font-size:13px}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:9px 13px;border-radius:999px;background:#e5f7f0;color:#087553;font-weight:800;font-size:12px}
+.field{height:130px;max-width:420px;width:100%;border-radius:18px;background:linear-gradient(135deg,#d8f2e6,#eff9d7);position:relative;overflow:hidden;border:1px solid #c8e9d8}
+.diamond{position:absolute;width:68px;height:68px;border:3px solid #14865f;transform:rotate(45deg);left:calc(50% - 34px);top:28px;border-radius:5px}
+.base{position:absolute;width:12px;height:12px;background:#ffad5c;transform:rotate(45deg)}
+.b1{left:calc(50% + 29px);top:59px}.b2{left:calc(50% - 6px);top:24px}.b3{left:calc(50% - 41px);top:59px}.home{left:calc(50% - 6px);top:94px}
+.controls{width:min(1120px,calc(100% - 32px));margin:0 auto 22px;display:flex;align-items:center;gap:12px;color:white}
+.progress{height:5px;background:#ffffff28;border-radius:20px;flex:1;overflow:hidden}.progress span{display:block;height:100%;background:linear-gradient(90deg,var(--green),var(--lime));transition:width .3s}
+.counter{font-size:12px;color:#c5d2e2;min-width:72px;text-align:center;font-variant-numeric:tabular-nums}
+.navbtn{border:1px solid #ffffff38;background:#ffffff12;color:white;border-radius:12px;padding:11px 16px;font-weight:750;transition:.2s}
+.navbtn:hover{background:#ffffff25;transform:translateY(-1px)}.navbtn.primary{background:var(--green);border-color:var(--green);color:#06291f}.navbtn:disabled{opacity:.35;cursor:not-allowed;transform:none}
+.menu-btn{border:0;background:transparent;color:white;font-size:20px;padding:8px}
+.drawer{position:fixed;inset:0;background:#06101dcc;z-index:10;display:none;align-items:stretch;justify-content:flex-end}.drawer.open{display:flex}.drawer-panel{width:min(380px,92vw);background:#f7fafc;padding:24px;overflow:auto;animation:slidein .25s ease}.drawer-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}.drawer h3{margin:0;color:var(--navy)}.close{border:0;background:#e7edf4;border-radius:9px;padding:8px 12px}.toc{display:grid;gap:8px}.toc button{text-align:left;border:1px solid var(--line);background:white;padding:12px;border-radius:10px;color:#20344c}.toc button.active{border-color:var(--green);background:#e8f8f1;font-weight:800}
+.quiz{margin-top:18px}.question{font-size:clamp(19px,2.5vw,25px);line-height:1.4;font-weight:800;color:#172c46;margin:12px 0 20px}.choices{display:grid;gap:10px}.choice{border:1.5px solid #d7e1ec;background:white;border-radius:13px;padding:14px 16px;text-align:left;display:flex;gap:12px;align-items:center;color:#20344c;transition:.15s}.choice:hover{border-color:#20b486;background:#f2fbf7}.choice.selected{border-color:#0e9b70;background:#e5f7f0;box-shadow:0 0 0 2px #20b48620}.choice .letter{width:28px;height:28px;border-radius:9px;background:#edf2f7;display:grid;place-items:center;font-weight:900;color:#38506a;flex:none}.quiz-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.check{border:0;background:var(--navy2);color:white;border-radius:12px;padding:12px 18px;font-weight:800}.feedback{margin-top:16px;padding:16px 18px;border-radius:14px;background:#e8f8f1;border:1px solid #bce8d4;line-height:1.5;display:none}.feedback.show{display:block;animation:enter .25s ease}.feedback.wrong{background:#fff4e8;border-color:#f6d2aa}.small{font-size:13px;color:#6b7d91;margin-top:12px}
+.footer{text-align:center;color:#aebed0;font-size:11px;padding:0 16px 18px}
+@keyframes enter{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}@keyframes slidein{from{transform:translateX(30px);opacity:.5}to{transform:none;opacity:1}}
+@media(max-width:620px){.topbar{height:58px}.topmeta{display:none}.stage{margin:14px auto}.slide{min-height:calc(100vh - 160px);border-radius:18px}.content{padding:25px 20px}.controls{gap:7px}.navbtn{padding:10px 12px}.counter{min-width:55px}.footer{display:none}}
+@media print{body,.app{background:white}.topbar,.controls,.footer,.menu-btn{display:none!important}.stage{width:100%;margin:0}.slide{box-shadow:none;min-height:100vh;page-break-after:always}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand"><div class="brand-mark">S</div><span>SOFTBALL <span style="font-weight:400;color:#b9c9d9">/ PJOK XII</span></span></div>
+    <div class="topmeta">Media pembelajaran interaktif</div>
+    <button class="menu-btn" id="openMenu" aria-label="Buka daftar materi">☰</button>
+  </header>
+  <main class="stage"><section class="slide" id="slide" aria-live="polite"><div class="accent"></div><div class="content" id="content"></div></section></main>
+  <nav class="controls" aria-label="Navigasi slide">
+    <button class="navbtn" id="prev">← Sebelumnya</button>
+    <div class="progress"><span id="progress"></span></div>
+    <div class="counter" id="counter">1 / 32</div>
+    <button class="navbtn primary" id="next">Berikutnya →</button>
+  </nav>
+  <div class="footer">Gunakan tombol navigasi atau tombol panah keyboard ← → • Tekan Esc untuk menutup menu</div>
+</div>
+<div class="drawer" id="drawer"><aside class="drawer-panel"><div class="drawer-head"><h3>Daftar Materi</h3><button class="close" id="closeMenu">Tutup ✕</button></div><div class="toc" id="toc"></div></aside></div>
+<script>
+const DATA = {"slides": [{"number": 1, "lines": ["MEDIA PEMBELAJARAN INTERAKTIF", "PERMAINAN", "SOFTBALL", "PJOK • KELAS XII SMA", "Kenali teknik, pahami strategi, mainkan dengan sportif.", "MULAI BELAJAR  →", "Klik tombol mulai untuk masuk ke menu materi."]}, {"number": 2, "lines": ["NAVIGASI", "Pilih perjalanan belajarmu", "Gunakan tombol untuk menuju bagian yang ingin dipelajari.", "01", "Pengenalan", "Pengertian, sejarah, tujuan", "BUKA  →", "02", "Peralatan & lapangan", "Bagian lapangan dan perlengkapan", "BUKA  →", "03", "Teknik dasar", "Melempar, menangkap, memukul, berlari", "BUKA  →", "04", "Aturan permainan", "Pemain, inning, run, out", "BUKA  →", "05", "Strategi bermain", "Menyerang dan bertahan", "BUKA  →", "06", "Kuis interaktif", "Uji pemahamanmu", "BUKA  →"]}, {"number": 3, "lines": ["01 • PENGENALAN", "Tujuan pembelajaran", "Setelah mengikuti pembelajaran, siswa diharapkan mampu:", "01", "Menjelaskan", "pengertian, sejarah, dan tujuan permainan softball.", "02", "Mengidentifikasi", "sarana, prasarana, posisi, dan aturan dasar.", "03", "Mempraktikkan", "gerak dasar melempar, menangkap, memukul, dan berlari.", "04", "Menerapkan", "strategi sederhana serta nilai kerja sama dan sportivitas.", "KEMBALI KE MENU"]}, {"number": 4, "lines": ["01 • PENGENALAN", "Apa itu softball?", "Permainan bola kecil beregu dengan dua tim yang bergantian menyerang dan bertahan.", "REGU PEMUKUL", "Memukul bola yang dilempar pitcher, lalu berlari melewati base untuk mencetak angka.", "REGU PENJAGA", "Menangkap dan menguasai bola, lalu berusaha mematikan pemukul atau pelari lawan.", "TUJUAN UTAMA", "Mencetak run sebanyak mungkin dan mencegah lawan mencetak run.", "MENU"]}, {"number": 5, "lines": ["01 • PENGENALAN", "Sejarah singkat", "Softball mulai berkembang di Amerika Serikat pada akhir abad ke-19.", "1887", "Chicago, Amerika Serikat", "George Hancock mengembangkan permainan yang kemudian dikenal sebagai softball. Permainan ini awalnya dimainkan di dalam ruangan, lalu berkembang ke lapangan terbuka dan menyebar ke berbagai negara.", "Ingat: softball dan baseball memiliki hubungan sejarah, tetapi berbeda dalam ukuran bola, lapangan, dan sejumlah aturan.", "MENU"]}, {"number": 6, "lines": ["02 • PERALATAN & LAPANGAN", "Mengenal lapangan softball", "Lapangan memiliki area infield dan outfield serta empat titik base.", "2ND", "1ST", "HOME", "3RD", "P", "INFIELD", "Area bagian dalam yang mencakup home plate, tiga base, dan area pitcher.", "OUTFIELD", "Area lapangan luar yang dijaga oleh left, center, dan right fielder.", "Pada fastpitch dewasa standar, jarak antarbase sekitar 18,29 meter. Ukuran dapat berbeda menurut kategori dan peraturan."]}, {"number": 7, "lines": ["02 • PERALATAN & LAPANGAN", "Peralatan utama", "Kenali fungsi setiap perlengkapan sebelum praktik.", "BOLA", "Objek yang dilempar, dipukul, dan ditangkap.", "BAT", "Alat untuk memukul bola.", "GLOVE", "Sarung tangan untuk membantu menangkap bola.", "HELMET", "Melindungi kepala pemukul dan pelari.", "BASE", "Titik yang harus disentuh pelari secara berurutan.", "PERLENGKAPAN CATCHER", "Masker dan pelindung tubuh untuk penangkap.", "MENU"]}, {"number": 8, "lines": ["04 • ATURAN PERMAINAN", "Posisi pemain bertahan", "Dalam fastpitch standar, satu regu menempatkan sembilan pemain di lapangan.", "1", "Pitcher", "Melempar bola", "2", "Catcher", "Menerima lemparan", "3", "First baseman", "Menjaga base 1", "4", "Second baseman", "Menjaga area base 2", "5", "Third baseman", "Menjaga base 3", "6", "Shortstop", "Menjaga area antara base 2–3", "7", "Left fielder", "Menjaga outfield kiri", "8", "Center fielder", "Menjaga outfield tengah", "9", "Right fielder", "Menjaga outfield kanan", "MENU"]}, {"number": 9, "lines": ["03 • TEKNIK DASAR", "Teknik melempar (throwing)", "Lemparan yang akurat membantu tim menguasai bola dan mematikan pelari.", "LEMPARAN ATAS", "Pegang bola, tarik lengan ke belakang atas, langkahkan kaki berlawanan, putar badan, lalu lepaskan bola ke sasaran.", "LEMPARAN SAMPING", "Ayunkan lengan dari samping tubuh. Arahkan bahu dan pandangan ke sasaran serta jaga keseimbangan.", "LEMPARAN BAWAH", "Ayunkan lengan dari bawah dan lepaskan bola dengan gerak terkontrol untuk operan jarak dekat.", "Kunci gerak: posisi tubuh seimbang • pandangan ke sasaran • gerak lanjutan terkontrol.", "MENU"]}, {"number": 10, "lines": ["03 • TEKNIK DASAR", "Teknik menangkap (catching)", "Ikuti arah bola, posisikan tubuh, dan serap bola dengan glove.", "FLY BALL", "Bola melambung di udara. Bergerak ke bawah lintasan bola dan tangkap setinggi yang nyaman.", "LINE DRIVE", "Bola melaju relatif lurus dan cepat. Siapkan glove dan tubuh di jalur bola.", "GROUND BALL", "Bola bergulir atau memantul. Rendahkan posisi tubuh, buka glove dekat permukaan tanah.", "Tips: gunakan dua tangan bila memungkinkan, tetap fokus pada bola, dan jangan menutup mata saat menangkap."]}, {"number": 11, "lines": ["03 • TEKNIK DASAR", "Teknik memukul (batting)", "Pukulan yang baik mengarahkan bola ke area yang sulit dijangkau penjaga.", "1 • SIKAP AWAL", "Berdiri menyamping, kaki terbuka nyaman, lutut rileks, dan pegang bat dengan kedua tangan.", "2 • AYUNAN", "Amati bola, putar pinggul dan bahu, lalu ayunkan bat melalui jalur bola.", "3 • GERAK LANJUTAN", "Lanjutkan ayunan, jaga keseimbangan, letakkan bat dengan aman, lalu lari ke base pertama.", "Keselamatan: ayunkan bat hanya di area latihan yang ditentukan dan pastikan tidak ada orang di dekat lintasan ayunan.", "MENU"]}, {"number": 12, "lines": ["03 • TEKNIK DASAR", "Pitcher dan catcher", "Keduanya bekerja sama memulai dan mengendalikan permainan.", "PITCHER", "Pemain bertahan yang melempar bola ke arah batter. Dalam fastpitch, lemparan dilakukan dengan gerakan underhand sesuai aturan.", "CATCHER", "Berada di belakang home plate. Menerima lemparan, menghentikan bola yang lepas, mengamati pelari, dan berkomunikasi dengan tim.", "Keduanya perlu komunikasi, konsentrasi, dan pemahaman situasi permainan.", "MENU"]}, {"number": 13, "lines": ["03 • TEKNIK DASAR", "Base running dan sliding", "Pelari harus membaca situasi, menyentuh base sesuai urutan, dan mengambil keputusan tepat.", "BASE RUNNING", "Setelah memukul, berlari menuju base pertama. Perhatikan bola, penjaga, dan instruksi pelatih base. Jangan melewati base tanpa memperhatikan situasi.", "SLIDING", "Gerakan meluncur menuju base untuk mencapai base atau menghindari tag. Latih bertahap di permukaan aman dan di bawah pengawasan guru.", "Di sekolah, utamakan keselamatan. Sliding bukan keharusan jika fasilitas atau permukaan lapangan tidak aman."]}, {"number": 14, "lines": ["04 • ATURAN PERMAINAN", "Bagaimana permainan berlangsung?", "Ringkasan aturan fastpitch standar; kompetisi atau kategori usia dapat memiliki ketentuan khusus.", "7 INNING", "Umumnya tujuh inning. Setiap tim mendapat giliran menyerang dan bertahan.", "3 OUT", "Giliran menyerang berakhir setelah tiga pemain dinyatakan out.", "4 BALL", "Empat ball memberi batter hak menuju base pertama.", "3 STRIKE", "Tiga strike menyebabkan batter strikeout, dengan ketentuan khusus foul ball."]}, {"number": 15, "lines": ["04 • ATURAN PERMAINAN", "Run, safe, dan out", "Pahami cara mencetak angka dan cara regu bertahan menghentikan serangan.", "RUN / ANGKA", "Pelari memperoleh satu run ketika berhasil menyentuh base 1, 2, 3, lalu kembali ke home plate secara sah.", "SAFE", "Pelari berhasil mencapai base dengan sah sebelum dimatikan oleh regu bertahan.", "OUT", "Pemain dinyatakan mati, misalnya strikeout, fly out, force out, atau tag out sesuai aturan.", "Contoh: bola hasil pukulan ditangkap langsung sebelum menyentuh tanah → batter out (fly out).", "MENU"]}, {"number": 16, "lines": ["05 • STRATEGI BERMAIN", "Strategi menyerang dan bertahan", "Strategi dipilih berdasarkan situasi, kemampuan pemain, dan posisi pelari.", "MENYERANG (OFFENSE)", "• Memukul ke ruang kosong", "• Membaca arah bola", "• Berlari antarbase dengan cermat", "• Bunting atau stealing jika sesuai aturan dan situasi", "BERTAHAN (DEFENSE)", "• Menempati posisi sesuai tugas", "• Mengantisipasi arah pukulan", "• Mengoper bola dengan cepat dan akurat", "• Berkomunikasi untuk mengamankan base", "Kunci strategi: keputusan cepat + komunikasi + kerja sama.", "MENU"]}, {"number": 17, "lines": ["05 • STRATEGI BERMAIN", "Karakter dalam permainan", "Softball juga melatih sikap dan keterampilan sosial.", "DISIPLIN", "Mengikuti aturan dan arahan.", "TANGGUNG JAWAB", "Menjalankan peran dalam tim.", "KERJA SAMA", "Mendukung dan berkomunikasi.", "SPORTIVITAS", "Menghormati lawan dan wasit.", "MENU"]}, {"number": 18, "lines": ["SAATNYA MENGUJI DIRI", "KUIS", "INTERAKTIF", "Pilih jawaban terbaik pada setiap soal.", "Setelah memilih, klik tombol periksa untuk melihat pembahasan.", "MULAI KUIS  →", "6 soal • pilihan ganda • umpan balik langsung"]}, {"number": 19, "lines": ["KUIS • SOAL 1 DARI 6", "Siapa tokoh yang dikenal mengembangkan softball pada 1887?", "Klik salah satu pilihan jawaban.", "A. James Naismith", "B. George Hancock", "C. William G. Morgan", "D. Pierre de Coubertin", "Pilih satu jawaban. Kamu akan langsung melihat apakah pilihanmu tepat.", "MENU MATERI"]}, {"number": 20, "lines": ["UMPAN BALIK", "Jawaban benar!", "Periksa alasan dan ingat kembali konsep utamanya.", "✓", "PEMBAHASAN", "George Hancock mengembangkan permainan softball di Chicago pada tahun 1887.", "LANJUT SOAL  →", "KEMBALI KE MENU", "Jawaban yang tepat: B. George Hancock"]}, {"number": 21, "lines": ["KUIS • SOAL 2 DARI 6", "Pemain yang melempar bola kepada batter disebut …", "Klik salah satu pilihan jawaban.", "A. Catcher", "B. Shortstop", "C. Pitcher", "D. Batter", "Pilih satu jawaban. Kamu akan langsung melihat apakah pilihanmu tepat.", "MENU MATERI"]}, {"number": 22, "lines": ["UMPAN BALIK", "Jawaban benar!", "Periksa alasan dan ingat kembali konsep utamanya.", "✓", "PEMBAHASAN", "Pitcher bertugas melempar bola ke arah batter. Dalam fastpitch, lemparan dilakukan dengan gerakan underhand.", "LANJUT SOAL  →", "KEMBALI KE MENU", "Jawaban yang tepat: C. Pitcher"]}, {"number": 23, "lines": ["KUIS • SOAL 3 DARI 6", "Teknik menangkap bola yang bergulir atau memantul di tanah disebut …", "Klik salah satu pilihan jawaban.", "A. Fly ball", "B. Ground ball", "C. Bunting", "D. Sliding", "Pilih satu jawaban. Kamu akan langsung melihat apakah pilihanmu tepat.", "MENU MATERI"]}, {"number": 24, "lines": ["UMPAN BALIK", "Jawaban benar!", "Periksa alasan dan ingat kembali konsep utamanya.", "✓", "PEMBAHASAN", "Ground ball adalah bola yang bergulir atau memantul di permukaan lapangan.", "LANJUT SOAL  →", "KEMBALI KE MENU", "Jawaban yang tepat: B. Ground ball"]}, {"number": 25, "lines": ["KUIS • SOAL 4 DARI 6", "Dalam fastpitch standar, satu regu menurunkan berapa pemain di lapangan?", "Klik salah satu pilihan jawaban.", "A. 7 pemain", "B. 8 pemain", "C. 9 pemain", "D. 10 pemain", "Pilih satu jawaban. Kamu akan langsung melihat apakah pilihanmu tepat.", "MENU MATERI"]}, {"number": 26, "lines": ["UMPAN BALIK", "Jawaban benar!", "Periksa alasan dan ingat kembali konsep utamanya.", "✓", "PEMBAHASAN", "Fastpitch standar menggunakan sembilan pemain bertahan di lapangan.", "LANJUT SOAL  →", "KEMBALI KE MENU", "Jawaban yang tepat: C. 9 pemain"]}, {"number": 27, "lines": ["KUIS • SOAL 5 DARI 6", "Berapa out yang mengakhiri giliran menyerang satu tim?", "Klik salah satu pilihan jawaban.", "A. 1 out", "B. 2 out", "C. 3 out", "D. 4 out", "Pilih satu jawaban. Kamu akan langsung melihat apakah pilihanmu tepat.", "MENU MATERI"]}, {"number": 28, "lines": ["UMPAN BALIK", "Jawaban benar!", "Periksa alasan dan ingat kembali konsep utamanya.", "✓", "PEMBAHASAN", "Setelah tiga out, giliran menyerang berakhir dan kedua tim bertukar peran.", "LANJUT SOAL  →", "KEMBALI KE MENU", "Jawaban yang tepat: C. 3 out"]}, {"number": 29, "lines": ["KUIS • SOAL 6 DARI 6", "Kapan satu run diperoleh?", "Klik salah satu pilihan jawaban.", "A. Saat mencapai base pertama", "B. Saat menangkap bola", "C. Saat kembali menyentuh home plate secara sah", "D. Saat memukul bola foul", "Pilih satu jawaban. Kamu akan langsung melihat apakah pilihanmu tepat.", "MENU MATERI"]}, {"number": 30, "lines": ["UMPAN BALIK", "Jawaban benar!", "Periksa alasan dan ingat kembali konsep utamanya.", "✓", "PEMBAHASAN", "Satu run diperoleh ketika pelari menyelesaikan lintasan base dan kembali menyentuh home plate secara sah.", "LANJUT SOAL  →", "KEMBALI KE MENU", "Jawaban yang tepat: C. Saat kembali menyentuh home plate secara sah"]}, {"number": 31, "lines": ["PENUTUP", "Rangkuman penting", "Ingat lima gagasan utama dari pembelajaran hari ini.", "•  Softball dimainkan oleh dua regu: pemukul dan penjaga.", "•  Teknik penting: melempar, menangkap, memukul, pitching, catching, dan base running.", "•  Run diperoleh ketika pelari kembali ke home plate secara sah.", "•  Regu bertahan berusaha memperoleh tiga out.", "•  Kerja sama, komunikasi, disiplin, dan sportivitas menentukan kualitas permainan.", "KEMBALI KE MENU"]}, {"number": 32, "lines": ["REFLEKSI", "Apa yang sudah kamu kuasai?", "Diskusikan atau tulis jawabanmu di buku catatan.", "•  Teknik apa yang paling mudah kamu lakukan? Mengapa?", "•  Teknik apa yang masih perlu kamu latih?", "•  Bagaimana cara tim membangun komunikasi yang baik?", "•  Nilai sportivitas apa yang kamu tunjukkan saat bermain?", "TERIMA KASIH • SELAMAT BERLATIH DAN TETAP SPORTIF!", "MENU"]}], "quiz": {"19": {"question": "Siapa tokoh yang dikenal mengembangkan softball pada 1887?", "options": [{"value": "A", "label": "James Naismith"}, {"value": "B", "label": "George Hancock"}, {"value": "C", "label": "William G. Morgan"}, {"value": "D", "label": "Pierre de Coubertin"}], "correct": "B", "explanation": "George Hancock mengembangkan permainan softball di Chicago pada tahun 1887.", "feedbackSlide": 20}, "21": {"question": "Pemain yang melempar bola kepada batter disebut …", "options": [{"value": "A", "label": "Catcher"}, {"value": "B", "label": "Shortstop"}, {"value": "C", "label": "Pitcher"}, {"value": "D", "label": "Batter"}], "correct": "C", "explanation": "Pitcher bertugas melempar bola ke arah batter. Dalam fastpitch, lemparan dilakukan dengan gerakan underhand.", "feedbackSlide": 22}, "23": {"question": "Teknik menangkap bola yang bergulir atau memantul di tanah disebut …", "options": [{"value": "A", "label": "Fly ball"}, {"value": "B", "label": "Ground ball"}, {"value": "C", "label": "Bunting"}, {"value": "D", "label": "Sliding"}], "correct": "B", "explanation": "Ground ball adalah bola yang bergulir atau memantul di permukaan lapangan.", "feedbackSlide": 24}, "25": {"question": "Dalam fastpitch standar, satu regu menurunkan berapa pemain di lapangan?", "options": [{"value": "A", "label": "7 pemain"}, {"value": "B", "label": "8 pemain"}, {"value": "C", "label": "9 pemain"}, {"value": "D", "label": "10 pemain"}], "correct": "C", "explanation": "Fastpitch standar menggunakan sembilan pemain bertahan di lapangan.", "feedbackSlide": 26}, "27": {"question": "Berapa out yang mengakhiri giliran menyerang satu tim?", "options": [{"value": "A", "label": "1 out"}, {"value": "B", "label": "2 out"}, {"value": "C", "label": "3 out"}, {"value": "D", "label": "4 out"}], "correct": "C", "explanation": "Setelah tiga out, giliran menyerang berakhir dan kedua tim bertukar peran.", "feedbackSlide": 28}, "29": {"question": "Kapan satu run diperoleh?", "options": [{"value": "A", "label": "Saat mencapai base pertama"}, {"value": "B", "label": "Saat menangkap bola"}, {"value": "C", "label": "Saat kembali menyentuh home plate secara sah"}, {"value": "D", "label": "Saat memukul bola foul"}], "correct": "C", "explanation": "Satu run diperoleh ketika pelari menyelesaikan lintasan base dan kembali menyentuh home plate secara sah.", "feedbackSlide": 30}}};
+let current = 1;
+let selected = {};
+let checked = {};
+const content = document.getElementById('content');
+const slideEl = document.getElementById('slide');
+const toc = document.getElementById('toc');
+const drawer = document.getElementById('drawer');
+const escapeHTML = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function classify(lines){
+  const joined=lines.join(' ');
+  if(current===1) return 'MEDIA PEMBELAJARAN INTERAKTIF';
+  return lines[0] || 'MATERI PEMBELAJARAN';
+}
+function render(){
+  const item=DATA.slides[current-1];
+  const lines=item.lines;
+  const quiz=DATA.quiz[current];
+  const title = lines.find((x,i)=>i>0 && !/^(0[1-5]\s•|KUIS •|UMPAN BALIK|PENUTUP|REFLEKSI|NAVIGASI)/.test(x)) || lines[0] || 'Softball';
+  const kicker = current===1 ? 'PJOK • KELAS XII SMA' : (lines[0] || 'PEMBELAJARAN SOFTBALL');
+  let body='';
+  if(quiz){
+    body += `<div class="kicker">KUIS INTERAKTIF • SOAL ${Object.keys(DATA.quiz).indexOf(String(current))+1} DARI 6</div>`;
+    body += `<h2>${escapeHTML(quiz.question)}</h2><div class="quiz"><div class="question">Pilih satu jawaban terbaik:</div><div class="choices">`;
+    quiz.options.forEach(o=>{
+      const isSel=selected[current]===o.value;
+      body += `<button class="choice ${isSel?'selected':''}" data-choice="${o.value}" ${checked[current]?'disabled':''}><span class="letter">${o.value}</span><span>${escapeHTML(o.label)}</span></button>`;
+    });
+    body += `</div><div class="quiz-actions"><button class="check" id="checkAnswer" ${checked[current]?'disabled':''}>Periksa jawaban</button><button class="navbtn" id="resetAnswer">Ulangi</button></div>`;
+    body += `<div class="feedback ${checked[current]?'show':''} ${checked[current] && selected[current]!==quiz.correct?'wrong':''}" id="feedback">${checked[current] ? (selected[current]===quiz.correct ? '<strong>Jawaban tepat!</strong> ' : '<strong>Belum tepat.</strong> ') + escapeHTML(quiz.explanation) : ''}</div>`;
+    body += `<p class="small">Pilih jawaban, lalu tekan “Periksa jawaban” untuk melihat umpan balik.</p></div>`;
+  } else {
+    const clean = lines.slice(1).filter(x=>x!==title && !/^Klik tombol|^Pilih salah satu|^Setelah memilih|^Jawaban yang tepat|^LANJUT SOAL|^KEMBALI KE MENU|^MENU MATERI/.test(x));
+    body += `<div class="kicker">${escapeHTML(kicker)}</div>`;
+    body += `<h1>${escapeHTML(title)}</h1>`;
+    if(current===1){
+      body += `<p class="lead">${escapeHTML(clean.slice(0,2).join(' '))}</p>`;
+      body += `<div class="hero-art"><span class="pill">● Belajar aktif</span><span class="pill">● Teknik dasar</span><span class="pill">● Kuis interaktif</span><div class="field"><div class="diamond"></div><i class="base b1"></i><i class="base b2"></i><i class="base b3"></i><i class="base home"></i></div></div>`;
+    } else {
+      const lead = clean.find(x=>x.length>55 && !/^A\./.test(x));
+      if(lead) body += `<p class="lead">${escapeHTML(lead)}</p>`;
+      const rest = clean.filter(x=>x!==lead && !/^(A|B|C|D)\./.test(x) && !/^(✓|✕)$/.test(x));
+      if(rest.length){
+        body += `<ul class="bullet">${rest.map(x=>`<li>${escapeHTML(x)}</li>`).join('')}</ul>`;
+      }
+      if(current===2){
+        body += `<div class="items">${[3,4,5,6,7,8,9,10,11,12,13,14,15,16,17].map(n=>`<div class="item"><strong>SLIDE ${n}</strong><p>${escapeHTML(DATA.slides[n-1].lines.find((x,i)=>i>0) || 'Materi softball')}</p></div>`).slice(0,6).join('')}</div>`;
+      }
+      if(current===18){
+        body += `<div class="hero-art"><span class="pill">6 soal pilihan ganda</span><span class="pill">Umpan balik langsung</span><button class="check" id="startQuiz">Mulai kuis →</button></div>`;
+      }
+    }
+  }
+  content.innerHTML=body;
+  document.getElementById('counter').textContent=`${current} / ${DATA.slides.length}`;
+  document.getElementById('progress').style.width=`${current/DATA.slides.length*100}%`;
+  document.getElementById('prev').disabled=current===1;
+  document.getElementById('next').disabled=current===DATA.slides.length;
+  document.getElementById('next').textContent=current===DATA.slides.length?'Selesai':'Berikutnya →';
+  document.querySelectorAll('[data-choice]').forEach(b=>b.addEventListener('click',()=>{if(!checked[current]){selected[current]=b.dataset.choice;render();}}));
+  const check=document.getElementById('checkAnswer');
+  if(check) check.addEventListener('click',()=>{if(selected[current]){checked[current]=true;render();}});
+  const reset=document.getElementById('resetAnswer');
+  if(reset) reset.addEventListener('click',()=>{delete selected[current];delete checked[current];render();});
+  const start=document.getElementById('startQuiz');
+  if(start) start.addEventListener('click',()=>go(19));
+  slideEl.classList.remove('replay'); void slideEl.offsetWidth; slideEl.classList.add('replay');
+  buildTOC();
+}
+function go(n){current=Math.max(1,Math.min(DATA.slides.length,n));render();drawer.classList.remove('open');}
+function buildTOC(){
+  toc.innerHTML=DATA.slides.map(s=>{
+    const name=s.lines.find((x,i)=>i>0 && x.length>3) || s.lines[0] || `Slide ${s.number}`;
+    return `<button class="${s.number===current?'active':''}" data-go="${s.number}"><b>${String(s.number).padStart(2,'0')}</b> &nbsp; ${escapeHTML(name.slice(0,58))}</button>`;
+  }).join('');
+  toc.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>go(Number(b.dataset.go))));
+}
+document.getElementById('prev').addEventListener('click',()=>go(current-1));
+document.getElementById('next').addEventListener('click',()=>go(current+1));
+document.getElementById('openMenu').addEventListener('click',()=>drawer.classList.add('open'));
+document.getElementById('closeMenu').addEventListener('click',()=>drawer.classList.remove('open'));
+drawer.addEventListener('click',e=>{if(e.target===drawer)drawer.classList.remove('open')});
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')go(current+1);if(e.key==='ArrowLeft')go(current-1);if(e.key==='Escape')drawer.classList.remove('open')});
+render();
+</script>
+</body>
+</html>
